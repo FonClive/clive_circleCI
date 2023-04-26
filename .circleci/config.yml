@@ -13,7 +13,6 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - checkout: 
       - run:
             name: "Testing save hello world job"
             command: echo "text to output here" > ~/output.txt
@@ -26,7 +25,6 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - checkout:
       - attach_workspace:
           at: ~/
       - run:
