@@ -37,6 +37,15 @@ jobs:
       - run:
             name: "print world"
             command: "echo world" 
+
+  print_user:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: "echo an env var that is part of our project"
+          command: | 
+            echo $USER_NAME
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
@@ -44,6 +53,7 @@ workflows:
     jobs:
       - say-hello
       - print_hello
-      - print_world
+      - print_world:
           requires:
             - print_hello
+      - print_user
